@@ -1,0 +1,83 @@
+import javax.swing.JOptionPane;
+
+
+public class RealMathProblemSolver {
+
+    public static void main(String[] args) {
+        while (true) {
+            displayMenu();
+
+            int choice = getUserChoice();
+
+            switch (choice) {
+                case 1:
+                    solveTrigonometryProblem();
+                    break;
+                case 2:
+                    solveSolidMensurationProblem();
+                    break;
+                case 3:
+                    solveGeometryProblem();
+                    break;
+                // Add more cases for additional math topics
+
+                default:
+                    JOptionPane.showMessageDialog(null, "Invalid choice. Please enter a valid option.");
+                    break;
+            }
+
+            if (!continueProgram()) {
+                break;
+            }
+        }
+
+        displayFarewellMessage();
+    }
+
+    private static void displayMenu() {
+        String menu = "Math Problem Solver Menu:\n" +
+                "1. Solve Trigonometry Problem\n" +
+                "2. Solve Solid Mensuration Problem\n" +
+                "3. Solve Geometry Problem";
+        // Add more menu options for additional math topics
+
+        JOptionPane.showMessageDialog(null, menu);
+    }
+
+    private static int getUserChoice() {
+        String choiceString = JOptionPane.showInputDialog("Enter your choice:");
+        return Integer.parseInt(choiceString);
+    }
+
+    private static void solveTrigonometryProblem() {
+        double angle = Double.parseDouble(JOptionPane.showInputDialog("Enter the angle in degrees:"));
+        double result = Math.sin(Math.toRadians(angle));
+        JOptionPane.showMessageDialog(null, "Solving Trigonometry Problem...\n" +
+                "The sine of " + angle + " degrees is approximately " + result);
+    }
+
+    private static void solveSolidMensurationProblem() {
+        double radius = Double.parseDouble(JOptionPane.showInputDialog("Enter the radius of the sphere:"));
+        double volume = (4.0 / 3.0) * Math.PI * Math.pow(radius, 3);
+        JOptionPane.showMessageDialog(null, "Solving Solid Mensuration Problem...\n" +
+                "The volume of the sphere with radius " + radius + " is approximately " + volume);
+    }
+
+    private static void solveGeometryProblem() {
+        double sideLength = Double.parseDouble(JOptionPane.showInputDialog("Enter the side length of the square:"));
+        double area = Math.pow(sideLength, 2);
+        JOptionPane.showMessageDialog(null, "Solving Geometry Problem...\n" +
+                "The area of the square with side length " + sideLength + " is " + area);
+    }
+
+    // Implement additional methods for other math topics
+
+    private static boolean continueProgram() {
+        String input = JOptionPane.showInputDialog("Do you want to continue? (yes/no):").toLowerCase();
+        return input.equals("yes");
+    }
+
+    private static void displayFarewellMessage() {
+        JOptionPane.showMessageDialog(null, "Thank you for using the Real Math Problem Solver. Goodbye!");
+    }
+}
